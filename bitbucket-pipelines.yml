@@ -10,4 +10,4 @@ pipelines:
     - step:
         script: # Modify the commands below to build your repository.
           - mvn clean
-          - mvn install
+          - mvn install -Dspring.profiles.active=memory
