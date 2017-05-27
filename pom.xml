@@ -3,10 +3,10 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>ua.ukrpost.api</groupId>
-    <artifactId>AddressClassifier</artifactId>
+    <artifactId>EschangeRates</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Address Classifier</name>
+    <name>Exchange Rates</name>
     <url>http://maven.apache.org</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -214,7 +214,7 @@
                 </executions>
             </plugin>
         </plugins>
-        <finalName>AddressClassifier</finalName>
+        <finalName>ExchangeRates</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
