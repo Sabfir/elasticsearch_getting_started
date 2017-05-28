@@ -1,6 +1,5 @@
 package ua.ukrpost.config;
 
-import lombok.extern.slf4j.Slf4j;
 import org.flywaydb.core.Flyway;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,6 @@ import java.util.Properties;
 @PropertySource(value = {
         "classpath:application.properties",
         "classpath:application-dev.properties"})
-@Slf4j
 public class HibernateConfig {
     private static final String PACKAGE_TO_SCAN = "ua.ukrpost.entity";
     private Environment environment;
@@ -90,10 +88,10 @@ public class HibernateConfig {
     @Bean(name = "dataSource")
     @Profile("stage")
     public DataSource dataSource() {
-        log.info("-----------------------------------------");
-        log.info("----------ACTIVE SPRING PROFILE----------");
-        log.info("-------------------STAGE------------------");
-        log.info("-----------------------------------------");
+        System.out.println("-----------------------------------------");
+        System.out.println("----------ACTIVE SPRING PROFILE----------");
+        System.out.println("-------------------STAGE------------------");
+        System.out.println("-----------------------------------------");
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(environment.getRequiredProperty("stage.jdbc.driverClassName"));
         dataSource.setUrl(environment.getRequiredProperty("stage.jdbc.url"));
@@ -105,10 +103,10 @@ public class HibernateConfig {
     @Bean(name = "dataSource")
     @Profile("dev")
     public DataSource dataSourceDevelopment() {
-        log.info("-----------------------------------------");
-        log.info("----------ACTIVE SPRING PROFILE----------");
-        log.info("-------------------DEV-------------------");
-        log.info("-----------------------------------------");
+        System.out.println("-----------------------------------------");
+        System.out.println("----------ACTIVE SPRING PROFILE----------");
+        System.out.println("-------------------DEV-------------------");
+        System.out.println("-----------------------------------------");
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(environment.getRequiredProperty("dev.jdbc.driverClassName"));
         dataSource.setUrl(environment.getRequiredProperty("dev.jdbc.url"));
@@ -120,10 +118,10 @@ public class HibernateConfig {
     @Bean(name = "dataSource")
     @Profile("memory")
     public DataSource dataSourceInMemory() {
-        log.info("-----------------------------------------");
-        log.info("----------ACTIVE SPRING PROFILE----------");
-        log.info("------------------MEMORY-----------------");
-        log.info("-----------------------------------------");
+        System.out.println("-----------------------------------------");
+        System.out.println("----------ACTIVE SPRING PROFILE----------");
+        System.out.println("------------------MEMORY-----------------");
+        System.out.println("-----------------------------------------");
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(environment.getRequiredProperty("memory.jdbc.driverClassName"));
         dataSource.setUrl(environment.getRequiredProperty("memory.jdbc.url"));
@@ -182,7 +180,7 @@ public class HibernateConfig {
     @Bean(name = "databasePopulator")
     @Profile("memory")
     public DatabasePopulator databasePopulatorProduction() {
-        log.info("DATABASE POPULATOR: memory");
+        System.out.println("DATABASE POPULATOR: memory");
         final ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
         populator.addScript(countryPopulatorMemory);
         return populator;
