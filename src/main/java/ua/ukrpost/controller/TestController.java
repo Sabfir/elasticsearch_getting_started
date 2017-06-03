@@ -23,6 +23,30 @@ public class TestController {
         this.testService = testService;
     }
 
+    @GetMapping("post/document1")
+    public ResponseEntity<?> indexDocument1() {
+        testService.indexDocument1();
+        return new ResponseEntity<>("success", OK);
+    }
+
+    @GetMapping("put/document1")
+    public ResponseEntity<?> updateDocument1() {
+        testService.updateDocument1();
+        return new ResponseEntity<>("success", OK);
+    }
+
+    @GetMapping("put-script/document1")
+    public ResponseEntity<?> updateDocument1WithScript() {
+        testService.updateDocument1WithScript();
+        return new ResponseEntity<>("success", OK);
+    }
+
+    @GetMapping("get/document1")
+    public ResponseEntity<?> fetchDocument1() {
+        testService.fetchDocument1();
+        return new ResponseEntity<>("success", OK);
+    }
+
     @GetMapping("post")
     public ResponseEntity<?> postData(@RequestParam String text) {
         try {
